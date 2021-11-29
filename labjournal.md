@@ -19,19 +19,17 @@ The output: 16435
 
 ## 5. Physical localization
 peplides.fa is a file containing list of peptides that were associated with the DNA. The data is obtained from tandem mass spectrometry experiments using chromatin fraction. <br>
-Creating blast database and doing a local blast search:
+### Creating blast database and doing a local blast search:
+Creating database:
 ```bash
-makeblastdb -in protein.fasta -blastdb_version 5 -dbtype prot
-blastp -db protein.fasta -query peptides.fa -out results.out
+makeblastdb -in protein.fasta -dbtype prot -out proteins_db
 ```
-So we have results.out file. Using a python script:
-```{python}
-import pandas as pd
-protein_table = pd.read_csv('data/results.out', sep='\t', comment='#', header=None)
-s = 'qacc sacc evalue qstart qend sstart send'
-protein_table.columns = s.split(' ')
-protein_table.head()
+Running blastp:
+```bash 
+blastp -query peptides.fa   -db proteins_db  -out proteins.blastp -outfmt "6 qseqid sseqid evalue qcovs pident" -evalue 0.05  -task blastp-short
+
 ```
-```{python}
-df.shape
-```
+So we have proteins.blastp file. Using a python script phys_loc.py. It can be found in ./scripts.<br>
+The head of the table:
+![phys_loc](./images/phys_loc.jpg "phys_loc") <br>
+There are 44 proteins in it
