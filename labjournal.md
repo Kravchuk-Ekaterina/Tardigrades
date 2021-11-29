@@ -17,3 +17,21 @@ grep -c ">" protein.fasta
 ```
 The output: 16435
 
+## 5. Physical localization
+peplides.fa is a file containing list of peptides that were associated with the DNA. The data is obtained from tandem mass spectrometry experiments using chromatin fraction. <br>
+Creating blast database and doing a local blast search:
+```bash
+makeblastdb -in protein.fasta -blastdb_version 5 -dbtype prot
+blastp -db protein.fasta -query peptides.fa -out results.out
+```
+So we have results.out file. Using a python script:
+```{python}
+import pandas as pd
+protein_table = pd.read_csv('data/results.out', sep='\t', comment='#', header=None)
+s = 'qacc sacc evalue qstart qend sstart send'
+protein_table.columns = s.split(' ')
+protein_table.head()
+```
+```{python}
+df.shape
+```
