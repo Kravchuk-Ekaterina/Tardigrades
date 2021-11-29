@@ -46,6 +46,30 @@ The output is 15. There are 15 extracted sequences
 Protein Subcellular Localization Prediction https://wolfpsort.hgc.jp/ <br>
 The results:<br>
 <br>
-g4106 details E.R.: 14.5, E.R._golg: 9.5, extr: 7, golg: 3.5, lyso: 3, pero: 2, plas: 1, mito: 1 g5237 details plas: 24, mito: 8 g5467 details extr: 27, plas: 4, mito: 1 g5502 details extr: 31, lyso: 1 g5503 details extr: 29, plas: 1, mito: 1, lyso: 1 g5510 details plas: 23, mito: 7, E.R.: 1, golg: 1 g5616 details extr: 31, mito: 1 g5641 details extr: 31, lyso: 1 g10513 details nucl: 20, cyto_nucl: 14.5, cyto: 7, extr: 3, E.R.: 1, golg: 1 g12510 details plas: 29, cyto: 3 g12562 details extr: 30, lyso: 2 g13530 details extr: 13, nucl: 6.5, lyso: 5, cyto_nucl: 4.5, plas: 3, E.R.: 3, cyto: 1.5 g14472 details nucl: 28, plas: 2, cyto: 1, cysk: 1 g15153 details extr: 32
+g4106 details E.R.: 14.5, E.R.golg: 9.5, extr: 7, golg: 3.5, lyso: 3, pero: 2, plas: 1, mito: 1 <br>
+g5237 details plas: 24, mito: 8 <br>
+g5467 details extr: 27, plas: 4, mito: 1 <br>
+g5502 details extr: 31, lyso: 1 <br>
+g5503 details extr: 29, plas: 1, mito: 1, lyso: 1 <br>
+g5510 details plas: 23, mito: 7, E.R.: 1, golg: 1 <br>
+g5616 details extr: 31, mito: 1 <br>
+g5641 details extr: 31, lyso: 1 <br>
+g10513 details nucl: 20, cyto_nucl: 14.5, cyto: 7, extr: 3, E.R.: 1, golg: 1 <br>
+g12510 details plas: 29, cyto: 3 <br>
+g12562 details extr: 30, lyso: 2 <br>
+g13530 details extr: 13, nucl: 6.5, lyso: 5, cyto_nucl: 4.5, plas: 3, E.R.: 3, cyto: 1.5 <br>
+g14472 details nucl: 28, plas: 2, cyto: 1, cysk: 1 <br>
+g15153 details extr: 32 <br>
 g15484 details nucl: 17.5, cyto_nucl: 15.3333, cyto: 12, cyto_mito: 6.83333, plas: 1, golg: 1
+
+### TargetP Server
+
+https://services.healthtech.dtu.dk/service.php?TargetP-2.0 <br>
+ The location assignment is based on the predicted presence of any of the N-terminal presequences<br>
+The results: <br>
+<br>
+![pred_prot1](./images/pred_prot1.jpg "pred_prot1") <br>
+![pred_prot2](./images/pred_prot2.jpg "pred_prot2") <br>
+![pred_prot3](./images/pred_prot3.jpg "pred_prot3") <br>
+
 
