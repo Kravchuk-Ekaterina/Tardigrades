@@ -72,4 +72,10 @@ The results: <br>
 ![pred_prot2](./images/pred_prot2.jpg "pred_prot2") <br>
 ![pred_prot3](./images/pred_prot3.jpg "pred_prot3") <br>
 
+## 7. BLAST search
+BLASTing (https://blast.ncbi.nlm.nih.gov) protein sequences against “UniProtKB/Swiss-Prot” database.<br>
+The settings: <br>
+![blast](./images/blast.jpg "blast") <br>
+You can find the results in blast_results.csv<br>
+
 
