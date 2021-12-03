@@ -6,6 +6,37 @@ wget http://kumamushi.org/data/YOKOZUNA-1.scaffolds.fa
 ```
 I renamed the file "tardigrade.fa"
 
+## 1. Repeat masking (was preprocessed)
+Eukaryotic genomes are rich in repeats. If all repeats won't be hidden (masked) they result in BLAST matches that produce false evidence for genome annotation. Repeat masking is usually performed with the help of RepeatMasker (it is based on reference repeat database, so it is necessary to chose closest relative repeats as a reference), but in our case it is better to use RepeatModeller (it can predict novel repeat families)
+
+## 2. Gene prediction (was preprocessed)
+"AUGUSTUS has currently been trained on species-specific training sets to predict genes in the limited list of species. The good news is that, for closely-related species, we usually only need one training set. For example, the human version is good for all mammals."<br>
+
+While working with augustus it is better to choose closest availible relative of tardigrates. We can use a phyloT service (which draws a philogenetic tree) to identify closest relative<br>
+### Installing augustus
+```bash 
+conda install -c bioconda augustus
+```
+### Processing data
+After processing data in augustus we get the augustus.whole.gff file (and remane it to genome_ann.gff). With the help of getAnnoFasta.pl we extracted proteins sequences and count them
+```bash
+perl getAnnoFasta.pl genome_ann.gff
+```
+Can't open perl script "getAnnoFasta.pl": No such file or directory
+got genome_ann.aa Rename it to proteins.fasta
+```bash
+mv genome_ann.aa proteins.fasta
+```
+Calculating the number of proteins
+```bash
+cat genome_ann.aa | grep ">" | wc -l
+```
+The output:
+16435
+
+## 3. Model training (was preprocessed)
+tardigrates is pretty far from pre-calculated models, so we can create specific model providing our own RNA-seq data. A full-length cDNA dataset was created for R. varieornatus using Sanger sequencing. We may train model on the base of this data and then use model to annotate the genome
+
 ## 4. Functional annotation 
 I used https://github.com/tejashree1modak/AUGUSTUS-helpers to obtain protein coding sequences
 ```bash
@@ -78,4 +109,15 @@ The settings: <br>
 ![blast](./images/blast.jpg "blast") <br>
 You can find the results in blast_results.csv<br>
 
+## 8. Pfam prediction
+Proteins that were not recognised by BLAST were processed in HMMER (HMMER search protein sequences against a collection of profile-HMMs for different protein domains and motifs) https://www.ebi.ac.uk/Tools/hmmer/
+
+## 9. Integrating our various pieces of evidence
+Created a table where for each protein, you provide the following information (if any is available): <br>
+a) best blast hit (annotation and e-value)<br>
+b) predicted Pfam domains<br>
+c) probable localization(s) according to WoLF PSORT<br>
+d) localization according to TargetP<br>
+I combined the results using script Project4.R (it can be found in scripts/ directory)<br>
+The output file is results.csv
 
